@@ -1,0 +1,28 @@
+
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks'; import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
+import Button from './index';
+import { Button as AntdButton } from 'antd';
+
+<Meta title="A Button Storybook Example" component={Button} />
+
+# Button
+
+## Simple Example
+
+<Preview withToolbar>
+<Story name = "Butotn Here" >
+    <Button type='primary'>Hello Button</Button>
+</Story >
+</Preview>
+
+<Props of={Button} />
+
+
+## Simple Example 2
+
+<Story name = "Antd Button fee" >
+    <AntdButton
+        type='primary'
+        disabled={boolean('Disabled', false)}>{text('Children', 'Antd Hello Button')}
+    </AntdButton>;
+</Story >
