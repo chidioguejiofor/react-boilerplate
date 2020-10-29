@@ -1,18 +1,8 @@
-import * as authConstants from "./constants";
+import { generateActionCreator } from "helpers/reduxHelpers";
+import * as constants from "./constants";
 
-export const registerUser = (payload) => ({
-  type: authConstants.REGISTER_REQUEST,
-  payload,
-});
+export const registerUser = generateActionCreator(
+  constants.REGISTER_USER.request
+);
 
-export const registerUserError = (payload) => ({
-  type: authConstants.REGISTER_ERROR,
-  payload,
-});
-
-export const registerUserSuccess = (payload) => ({
-  type: authConstants.REGISTER_SUCCESS,
-  payload,
-});
-
-export default authConstants;
+export default constants;

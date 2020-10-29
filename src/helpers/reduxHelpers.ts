@@ -1,5 +1,11 @@
 type REDUX_STATUS = "REQUEST" | "SUCCESS" | "ERROR";
 
+export type ActionTypesObject = {
+  request: string;
+  success: string;
+  error: string;
+};
+
 export function extractStatus(type): REDUX_STATUS {
   let status = type.split("_").pop();
 
@@ -8,6 +14,33 @@ export function extractStatus(type): REDUX_STATUS {
   }
 
   return status;
+}
+
+/**
+ * This creates a success, request and error action for the specified action name
+ * This makes creating action types a lot easier and less repetitive.
+ * @param name The name of the action
+ */
+export function createActionType(name: string): ActionTypesObject {
+  return {
+    request: `${name}_REQUEST`,
+    success: `${name}_SUCCESS`,
+    error: `${name}_ERROR`,
+  };
+}
+
+/**
+ * This returns an action creator function that you can easily use in a
+ * dispatch in your components.
+ * @param actionType a string that makes specifies the action type
+ */
+export function generateActionCreator(actionType: string) {
+  const actionCreator = (payload?: any) => ({
+    type: actionType,
+    payload,
+  });
+
+  return actionCreator;
 }
 
 export function handleReduxAction<T = Record<string, any>>(

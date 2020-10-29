@@ -5,20 +5,31 @@ import { message } from "antd";
 
 // Originally got this idea from [Chima Chukwuemeka](https://twitter.com/chukwuemekachm).
 // Although I have improved it since.
-export function* errorHandler(error, errorCb) {
+export function* errorHandler(
+  error,
+  errorActionType: string,
+  customMessage: string | boolean = true
+) {
   if (error.response) {
     if (error.response.status === 401) {
       // TODO: handle auth errors and log out user
     }
 
-    if (error.response.data && error.response.data.message) {
+    if (customMessage && error.response.data && error.response.data.message) {
       // Show error messages here
-      const msg = error.response.data.message;
+      // TODO: The position of the message is dependent on your API.
+      //    Refactor as needed
+      const msgFromAPI = error.response.data.message;
+      const msg =
+        typeof customMessage === "string" ? customMessage : msgFromAPI;
 
-      message.error(msg);
+      msg && message.error(msg);
     }
 
-    yield put(errorCb(error.response.data));
+    yield put({
+      type: errorActionType,
+      payload: error.response.data,
+    });
 
     return null;
   } else if (error.request) {
@@ -27,7 +38,10 @@ export function* errorHandler(error, errorCb) {
     //  This occured when the URL I sent was undefined
     //  This also occured when the server is offline. I guess advising the user to check their
     //  or contact support if the problem persists is appropriate
-    yield put(errorCb({}));
+    yield put({
+      type: errorActionType,
+      payload: {},
+    });
     yield message.error("Poor internet connection", 1);
     message.info("Please check your internet connection.");
   } else {
@@ -36,17 +50,27 @@ export function* errorHandler(error, errorCb) {
   }
 }
 
-export function* successHandler(response, successCb, notify = true) {
+export function* successHandler(
+  response,
+  successActionType: string,
+  customMessage: string | boolean = true
+) {
   const data = yield response.data;
 
   if (
-    notify &&
+    customMessage &&
     response.status >= 200 &&
     response.status < 299 &&
     data.message
   ) {
-    message.success(data.message);
+    const msg =
+      typeof customMessage === "string" ? customMessage : data.message;
+
+    msg && message.success(data.message);
   }
 
-  yield put(successCb(data));
+  yield put({
+    type: successActionType,
+    payload: data,
+  });
 }
