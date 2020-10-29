@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import Pages from "components/pages";
+import Pages from "pages";
 import store from "store";
 import "index.css";
 

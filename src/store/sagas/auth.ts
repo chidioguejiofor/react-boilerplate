@@ -1,11 +1,13 @@
-import { fork, takeLatest, put } from "redux-saga/effects";
-import constants, { registerUserSuccess } from "store/actions";
+import { fork, takeLatest } from "redux-saga/effects";
+import constants from "store/actions";
 
 function* signUpUser(action: Action) {
   try {
     console.log("Signning Up User....");
-    yield put(registerUserSuccess({}));
     // TODO: This is where we make API calls for signup
+    //  The call below is an example of what you do after axios call
+    //
+    //  yield put(successHandler(response, constants.REGISTER_USER.success));
   } catch (error) {
     // TODO: Whenever an error occurs
   }
@@ -21,11 +23,11 @@ function* loginUser(action: Action) {
 }
 
 export function* watchLoginUser() {
-  yield takeLatest(constants.LOGIN_REQUEST, loginUser);
+  yield takeLatest(constants.LOGIN.request, loginUser);
 }
 
 export function* watchSignupUser() {
-  yield takeLatest(constants.REGISTER_REQUEST, signUpUser);
+  yield takeLatest(constants.REGISTER_USER.request, signUpUser);
 }
 
 export default function* authSaga() {

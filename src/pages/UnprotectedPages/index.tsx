@@ -1,4 +1,4 @@
-import { LANDING_PAGE, ABOUT_PAGE } from "components/pages/paths";
+import { LANDING_PAGE, ABOUT_PAGE } from "pages/paths";
 import LandingPage from "./LandingPage";
 import AboutPage from "./AboutPage";
 import { convertRoutesToComponents } from "helpers/pageParser";
