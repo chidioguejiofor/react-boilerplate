@@ -1,5 +1,5 @@
 import { fork, takeLatest } from "redux-saga/effects";
-import constants from "store/actions";
+import constants from "reduxUtils/actions";
 
 function* signUpUser(action: Action) {
   try {
