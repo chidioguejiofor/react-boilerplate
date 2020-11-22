@@ -1,5 +1,5 @@
 import { extractStatus, handleReduxAction } from "helpers/reduxHelpers";
-import constants from "store/actions";
+import constants from "reduxUtils/actions";
 import {
   defaultSingleObjectState,
   defaultSingleObjectPayload,

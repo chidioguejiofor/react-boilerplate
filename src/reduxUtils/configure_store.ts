@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
-import rootReducer from "store/reducers";
-import rootSaga from "store/sagas";
+import rootReducer from "reduxUtils/reducers";
+import rootSaga from "reduxUtils/sagas";
 
 declare global {
   interface Window {
