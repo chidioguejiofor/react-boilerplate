@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Avatar, AvatarProps } from "components/lib/media/Avatar";
+import { Avatar, AvatarProps } from "components/shared/media/Avatar";
 
 export default {
   title: "Media/Avatar",
