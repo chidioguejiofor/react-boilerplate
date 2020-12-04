@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import Pages from "pages";
-import store from "reduxUtils";
+import store from "lib/redux";
 
 import "index.css";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "components/lib/controls/Button";
+import Button from "components/shared/controls/Button";
 import LandingPageLayout from "components/layouts/LandingPageLayout";
 
 function LadingPage() {

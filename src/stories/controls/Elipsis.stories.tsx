@@ -1,5 +1,5 @@
 import React from "react";
-import Elipsis, { ElipsisProps } from "components/lib/controls/Elipsis";
+import Elipsis, { ElipsisProps } from "components/shared/controls/Elipsis";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
 export default {
