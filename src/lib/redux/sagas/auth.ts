@@ -3,7 +3,7 @@ import constants from "lib/redux/actions";
 
 function* signUpUser(action: Action) {
   try {
-    console.log("Signning Up User....");
+    yield console.log("Signning Up User....");
     // TODO: This is where we make API calls for signup
     //  The call below is an example of what you do after axios call
     //
